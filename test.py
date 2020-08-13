@@ -1,3 +1,4 @@
+"""Teste da função fizzbuzz."""
 import unittest
 
 
@@ -5,6 +6,7 @@ class TesteFizzBuzz(unittest.TestCase):
     """Classe para teste da função fizzbuzz."""
 
     def test_com_10(self):
+        """Teste com entrada igual a 10."""
         entrada = 10
         resultado = fizzbuzz(entrada)
         esperado = [
