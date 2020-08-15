@@ -6,6 +6,7 @@ def soma(x, y):
     return x + y
 
 
-a = "Eu"
-b = "Voce"
-print(soma(a, b))
+if __name__ == '__main__':
+    a = "Eu e "
+    b = "Voce"
+    print(soma(a, b))
