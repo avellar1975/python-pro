@@ -25,8 +25,12 @@ class Pessoa:
         return f'{cls.olhos}'
 
 
+class Homem(Pessoa):
+    pass
+
+
 if __name__ == '__main__':
-    yanni = Pessoa(nome='Yanni', idade=22)
+    yanni = Homem(nome='Yanni', idade=22)
     evandro = Pessoa('Evandro', 44, yanni)
     print(f'{evandro.nome} tem {evandro.idade} e seus filhos são:')
     for filho in evandro.filhos:
