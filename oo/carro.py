@@ -38,6 +38,10 @@ class Motor:
         if self.velocidade < 0:
             self.velocidade = 0
 
+NORTE = 'Norte'
+LESTE = 'Leste'
+SUL = 'Sul'
+OESTE = 'Oeste'
 
 class Direcao:
     """Testando Direcao.
@@ -75,25 +79,22 @@ class Direcao:
         self.valor = valor
 
     def girar_a_direita(self):
-        if self.valor == 'Norte':
-            self.valor = 'Leste'
-        elif self.valor == 'Leste':
-            self.valor = 'Sul'
-        elif self.valor == 'Sul':
-            self.valor = 'Oeste'
-        else:
-            self.valor = 'Norte'
+        rotacionar_direita = {
+            NORTE: LESTE,
+            LESTE: SUL,
+            SUL: OESTE,
+            OESTE: NORTE
+        }
+        self.valor = rotacionar_direita[self.valor]
 
     def girar_a_esquerda(self):
-        if self.valor == 'Norte':
-            self.valor = 'Oeste'
-        elif self.valor == 'Oeste':
-            self.valor = 'Sul'
-        elif self.valor == 'Sul':
-            self.valor = 'Leste'
-        else:
-            self.valor = 'Norte'
-
+        rotacionar_esqueda = {
+            NORTE: OESTE,
+            LESTE: NORTE,
+            SUL: LESTE,
+            OESTE: SUL
+        }
+        self.valor = rotacionar_esqueda[self.valor]
 
 class Carro:
     """Testes da Classe Carro.
