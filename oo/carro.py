@@ -38,10 +38,12 @@ class Motor:
         if self.velocidade < 0:
             self.velocidade = 0
 
+
 NORTE = 'Norte'
 LESTE = 'Leste'
 SUL = 'Sul'
 OESTE = 'Oeste'
+
 
 class Direcao:
     """Testando Direcao.
@@ -95,6 +97,7 @@ class Direcao:
             OESTE: SUL
         }
         self.valor = rotacionar_esqueda[self.valor]
+
 
 class Carro:
     """Testes da Classe Carro.
