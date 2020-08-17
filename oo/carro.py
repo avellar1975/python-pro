@@ -2,72 +2,10 @@
 
 
 class Motor:
-    def __init__(self):
-        self.velocidade = 0
+    """
+    Testes da Classe Motor.
 
-    def acelerar(self):
-        self.velocidade += 1
-        return self.velocidade
-
-    def frear(self):
-        self.velocidade -= 1
-        return self.velocidade
-
-
-class Direcao:
-    def __init__(self, valor='norte'):
-        self.valor = valor
-
-    def girar_a_direita(self):
-        if self.valor == 'norte':
-            self.valor = 'leste'
-        elif self.valor == 'leste':
-            self.valor = 'sul'
-        elif self.valor == 'sul':
-            self.valor = 'oeste'
-        else:
-            self.valor = 'norte'
-        return self.valor
-
-    def girar_a_esquerda(self):
-        if self.valor == 'norte':
-            self.valor = 'oeste'
-        elif self.valor == 'oeste':
-            self.valor = 'sul'
-        elif self.valor == 'sul':
-            self.valor = 'leste'
-        else:
-            self.valor = 'norte'
-        return self.valor
-
-
-class Carro:
-
-    def __init__(self, motor, direcao):
-        self.motor = motor
-        self.direcao = direcao
-
-    def calcular_velocidade(self):
-        return self.motor.velocidade
-
-    def calcular_direcao(self):
-        return self.direcao.valor
-
-    def acelerar(self):
-        return self.motor.acelerar()
-
-    def frear(self):
-        return self.motor.frear()
-
-    def girar_a_direita(self):
-        return self.direcao.girar_a_direita()
-
-    def girar_a_esquerda(self):
-        return self.direcao.girar_a_esquerda()
-
-
-"""
-Exemplo:
+    Exemplo:
     >>> # Testando motor
     >>> motor = Motor()
     >>> motor.velocidade
@@ -83,11 +21,27 @@ Exemplo:
     3
     >>> motor.frear()
     >>> motor.velocidade
-    1
+    2
     >>> motor.frear()
     >>> motor.velocidade
-    0
-    >>> # Testando Direcao
+    1
+    """
+
+    def __init__(self):
+        self.velocidade = 0
+
+    def acelerar(self):
+        self.velocidade += 1
+
+    def frear(self):
+        self.velocidade -= 2
+        if self.velocidade < 0:
+            self.velocidade = 0
+
+
+class Direcao:
+    """Testando Direcao.
+
     >>> direcao = Direcao()
     >>> direcao.valor
     'Norte'
@@ -114,8 +68,38 @@ Exemplo:
     'Leste'
     >>> direcao.girar_a_esquerda()
     >>> direcao.valor
-    'Norte'
-    >>> carro = Carro(direcao, motor)
+    'Sul'
+    """
+
+    def __init__(self, valor='Norte'):
+        self.valor = valor
+
+    def girar_a_direita(self):
+        if self.valor == 'Norte':
+            self.valor = 'Leste'
+        elif self.valor == 'Leste':
+            self.valor = 'Sul'
+        elif self.valor == 'Sul':
+            self.valor = 'Oeste'
+        else:
+            self.valor = 'Norte'
+
+    def girar_a_esquerda(self):
+        if self.valor == 'Norte':
+            self.valor = 'Oeste'
+        elif self.valor == 'Oeste':
+            self.valor = 'Sul'
+        elif self.valor == 'Sul':
+            self.valor = 'Leste'
+        else:
+            self.valor = 'Norte'
+
+
+class Carro:
+    """Testes da Classe Carro.
+    >>> motor = Motor()
+    >>> direcao = Direcao()
+    >>> carro = Carro(motor, direcao)
     >>> carro.calcular_velocidade()
     0
     >>> carro.acelerar()
@@ -126,7 +110,7 @@ Exemplo:
     2
     >>> carro.frear()
     >>> carro.calcular_velocidade()
-    0
+    1
     >>> carro.calcular_direcao()
     'Norte'
     >>> carro.girar_a_direita()
@@ -138,11 +122,26 @@ Exemplo:
     >>> carro.girar_a_esquerda()
     >>> carro.calcular_direcao()
     'Oeste'
-"""
-# Testando
-if __name__ == '__main__':
-    motor = Motor()
-    motor.velocidade
-    motor.acelerar()
-    motor.acelerar()
-    direcao = Direcao()
+    """
+
+    def __init__(self, motor, direcao):
+        self.motor = motor
+        self.direcao = direcao
+
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def calcular_direcao(self):
+        return self.direcao.valor
+
+    def acelerar(self):
+        return self.motor.acelerar()
+
+    def frear(self):
+        return self.motor.frear()
+
+    def girar_a_direita(self):
+        return self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        return self.direcao.girar_a_esquerda()
