@@ -1,5 +1,5 @@
 """Módulo fase."""
-from itertools import chain
+# from itertools import chain
 from atores import ATIVO
 
 
@@ -140,7 +140,6 @@ class Fase():
             for alvo in self._obstaculos + self._porcos:
                 passaro.colidir(alvo, self.intervalo_de_colisao)
             passaro.colidir_com_chao()
-
 
         pontos = [
             self._transformar_em_ponto(a)

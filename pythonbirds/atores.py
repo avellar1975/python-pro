@@ -1,6 +1,6 @@
 """Atores."""
 from __future__ import unicode_literals
-import math
+from math import sin, cos, radians
 
 DESTRUIDO = 'Destruido'
 ATIVO = 'Ativo'
@@ -28,7 +28,6 @@ class Ator():
         self.y = y
         self.x = x
         self.status = ATIVO
-        #self.caracter()
 
     def caracter(self):
         """Método caracter."""
@@ -71,9 +70,7 @@ class Ator():
 
         if colisao:
             if self.status == ATIVO and outro_ator.status == ATIVO:
-                self.status = DESTRUIDO
-                outro_ator.status = DESTRUIDO
-
+                self.status = outro_ator.status = DESTRUIDO
         return self.status, outro_ator.status
 
 
@@ -158,11 +155,11 @@ class Passaro(Ator):
 
             # Lançamento horizontal
             self.x = self._x_inicial
-            self.x += ve * delta_t * math.cos(self._angulo_de_lancamento)
+            self.x += ve * delta_t * cos(self._angulo_de_lancamento)
 
             # Lançamento vertical
             self.y = self._y_inicial
-            self.y += ve * delta_t * math.sin(self._angulo_de_lancamento)
+            self.y += ve * delta_t * sin(self._angulo_de_lancamento)
             self.y -= GRAVIDADE * (delta_t ** 2) / 2
         return self.x, self.y
 
@@ -178,7 +175,7 @@ class Passaro(Ator):
         :param tempo_de_lancamento:
         :return:
         """
-        self._angulo_de_lancamento = math.radians(angulo)
+        self._angulo_de_lancamento = radians(angulo)
         self._tempo_de_lancamento = tempo_de_lancamento
         self._foi_lancado = True
 

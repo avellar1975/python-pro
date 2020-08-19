@@ -1,3 +1,4 @@
+"""Executor dos testes."""
 #!/usr/bin/env python
 # coding: utf-8
 
