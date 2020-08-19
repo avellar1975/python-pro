@@ -1,4 +1,4 @@
-# coding: utf-8
+"""Placa Gráfica."""
 import time
 from tkinter import PhotoImage, NW, Tk, Canvas
 from tkinter.constants import ALL
@@ -36,6 +36,7 @@ CARACTER_PARA__IMG_DCT = {'V': PASSARO_VERMELHO,
 
 
 def plotar(camada_de_atores, ponto):
+    """Método plotar."""
     if ponto.caracter != ' ':
         x = ponto.x
         y = ALTURA_DA_TELA - ponto.y - 120  # para coincidir com o chao da tela
@@ -50,7 +51,7 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
     multiplicador_rebobinar = 20
 
     def _animar():
-        tempo_de_inicio_de_animacao=time.time()
+        tempo_de_inicio_de_animacao = time.time()
 
         nonlocal tempo
         nonlocal delta_t
@@ -78,8 +79,8 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
             camada_de_atores.create_text(35, 493, text="%d°" % angulo)
             for ponto in fase.calcular_pontos(tempo):
                 plotar(camada_de_atores, ponto)
-            tempo_gasto_com_animacao= round((time.time() - tempo_de_inicio_de_animacao)*1000) # Trans
-            tempo_proxima_animacao = passo - tempo_gasto_com_animacao if passo>tempo_gasto_com_animacao else 1
+            tempo_gasto_com_animacao = round((time.time() - tempo_de_inicio_de_animacao)*1000)
+            tempo_proxima_animacao = passo - tempo_gasto_com_animacao if passo > tempo_gasto_com_animacao else 1
             tela.after(tempo_proxima_animacao, _animar)
 
     def _ouvir_comandos_lancamento(evento):
@@ -102,7 +103,6 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
         if fase.acabou(tempo):
             delta_t *= -multiplicador_rebobinar
             _animar()
-
 
     def _jogar_novamente(event):
         return
@@ -129,6 +129,7 @@ def animar(tela, camada_de_atores, fase, passo=0.01, delta_t=0.04):
 
 
 def rodar_fase(fase):
+    """Método rodar_fase."""
     root.title("Python Birds")
     root.geometry("800x600")
     root.resizable(0, 0)
@@ -143,7 +144,9 @@ def rodar_fase(fase):
 
 if __name__ == '__main__':
     fase = Fase(intervalo_de_colisao=32)
-    passaros = [PassaroVermelho(30, 30), PassaroAmarelo(30, 30), PassaroAmarelo(30, 30)]
+    passaros = [PassaroVermelho(30, 30),
+                PassaroAmarelo(30, 30),
+                PassaroAmarelo(30, 30)]
     porcos = [Porco(750, 1), Porco(700, 1)]
     obstaculos = [Obstaculo(310, 100)]
 

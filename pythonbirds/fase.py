@@ -1,14 +1,12 @@
 """Módulo fase."""
-# from itertools import chain
 from atores import ATIVO
-
 
 VITORIA = 'VITORIA'
 DERROTA = 'DERROTA'
 EM_ANDAMENTO = 'EM_ANDAMENTO'
 
 
-class Ponto():
+class Ponto:
     """Classe Ponto()."""
 
     def __init__(self, x, y, caracter):
@@ -33,10 +31,10 @@ class Ponto():
 
     def __repr__(self, *args, **kwargs):
         """Representação do Ponto."""
-        return "Ponto(%s,%s,'%s')" % (self.x, self.y, self.caracter)
+        return f"Ponto({self.x}, {self.y},'{self.caracter}')"
 
 
-class Fase():
+class Fase:
     """Classe Fase()."""
 
     def __init__(self, intervalo_de_colisao=1):

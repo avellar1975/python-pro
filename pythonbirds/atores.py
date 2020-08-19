@@ -1,4 +1,4 @@
-"""Atores."""
+"""Classe atores."""
 from __future__ import unicode_literals
 from math import sin, cos, radians
 
@@ -50,10 +50,11 @@ class Ator():
         Método que executa lógica de colisão entre dois atores.
 
         Só deve haver colisão se os dois atores tiverem seus status ativos.
-        Para colisão, é considerado um quadrado, com lado igual ao
-        parâmetro intervalo, em volta do ponto onde se encontra o ator.
-        Se os atores estiverem dentro desse mesmo quadrado, seus status devem
-        ser alterados para destruido, seus caracteres para destruido também.
+        Para colisão, é considerado um quadrado, cuja a distância do ponto
+        (centro do quadrado) até o lado do quadrado seja igual ao parâmetro
+        intervalo. Se os atores estiverem dentro desse mesmo quadrado, seus
+        status devem ser alterados para destruido, seus caracteres para
+        destruido também.
 
         :param outro_ator: Ator a ser considerado na colisão
         :param intervalo: Intervalo a ser considerado
@@ -75,13 +76,13 @@ class Ator():
 
 
 class Obstaculo(Ator):
-    """Classe Obstaculo."""
+    """Classe Obstaculo herda de Ator."""
 
     _caracter_ativo = 'O'
 
 
 class Porco(Ator):
-    """Classe Porco."""
+    """Classe Porco herda de Ator."""
 
     _caracter_ativo = '@'
     _caracter_destruido = '+'

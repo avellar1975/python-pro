@@ -102,13 +102,12 @@ class AtorTestes(TestCase):
         self.assert_nao_colisao(Ator(1, 3), ator)
 
     def test_caracter(self):
-        'Teste de caracter para status ATIVO e DESTRUIDO'
+        """Teste de caracter para status ATIVO e DESTRUIDO."""
         ator = Ator()
         self.assertEqual('A', ator.caracter())
         outro_ator_na_mesma_posicao = Ator()
         ator.colidir(outro_ator_na_mesma_posicao)
         self.assertEqual(' ', ator.caracter())
-
 
     def assert_colisao_atores_ativos(self, ator, ator2, intervalo=1):
         """
@@ -152,8 +151,12 @@ class AtorTestes(TestCase):
 
 class ObstaculoTestes(TestCase):
     """
-    Esperado '0' como caracter de obstáculo ativo e ' ' como caracter de obstáculo destruído
+    Teste de obstáculos.
+
+    Esperado '0' como caracter de obstáculo ativo e ' ' como caracter de
+    obstáculo destruído
     """
+
     def teste_status(self):
         obstaculo = Obstaculo()
         self.assertEqual('O', obstaculo.caracter())
@@ -164,8 +167,12 @@ class ObstaculoTestes(TestCase):
 
 class PorcoTestes(TestCase):
     """
-    Esperado '@' como caracter de porco ativo e '+' como caracter de porco destruido
+    Teste de Porcos.
+
+    Esperado '@' como caracter de porco ativo e '+' como caracter de porco
+    destruido
     """
+
     def teste_status(self):
         porco = Porco()
         self.assertEqual('@', porco.caracter())
@@ -177,14 +184,15 @@ class PorcoTestes(TestCase):
 class PassaroBaseTests(TestCase):
     """
     Classe base para teste de passaros.
-    Essa classe não contèm nenhum teste, serve apenas para encapsular a lógica de asserção de posição de passaros
-    vermelhos e também dos amarelos.
 
+    Essa classe não contem nenhum teste, serve apenas para encapsular a lógica
+    de asserção de posição de passaros vermelhos e também dos amarelos.
     """
 
     def assert_passaro_posicao(self, x_esperado, y_esperado, status_esperado, passaro, tempo):
         """
         Método que se testa posição do pássaro.
+
         Atenção: Esse não é um método de teste porque não se inicia com prefixo "test".
         :param x_esperado: posição x esperada do passaro
         :param y_esperado: posição y esperada do passaro
@@ -192,6 +200,7 @@ class PassaroBaseTests(TestCase):
         :param passaro: passaro alvo do teste
         :param tempo: tempo do jogo
         """
+
         x_calculado, y_calculado = passaro.calcular_posicao(tempo)
         self.assertEqual(x_esperado, round(x_calculado), 'valor real de x = %s' % x_calculado)
         self.assertEqual(y_esperado, round(y_calculado), 'valor real de y = %s' % y_calculado)
@@ -200,7 +209,9 @@ class PassaroBaseTests(TestCase):
 
 class PassaroVermelhoTests(PassaroBaseTests):
     """
-    Classe de teste e Passaro Vermelho
+    Classe de teste e Passaro Vermelho.
+
+    Exemplos
     """
 
     def teste_status(self):
@@ -214,11 +225,12 @@ class PassaroVermelhoTests(PassaroBaseTests):
     def teste_velocidade_escalar(self):
         self.assertEqual(20, PassaroVermelho.velocidade_escalar)
 
-
     def teste_foi_lancado(self):
         """
-        Teste de lançamento. Enquanto o método lançar do passaro não for chamado, o méotodo foi_lancado deve retornar
-        Falso
+        Teste de lançamento.
+
+        Enquanto o método lançar do passaro não for chamado, o méotodo
+        foi_lancado deve retornar Falso
         :return:
         """
         passaro_vermelho = PassaroVermelho(1, 1)
@@ -267,16 +279,16 @@ class PassaroAmareloTests(PassaroBaseTests):
 
     def teste_lacamento_vertical(self):
         """
-        Tests de lançamento vertical. Nele, o passaro só se move verticalmente e sua posição y se matém contanstante
+        Teste de lançamento vertical.
+
+        Nele, o passaro só se move verticalmente e sua posição y se matém
+        contanstante
         :return:
         """
         passaro_amarelo = PassaroAmarelo(1, 1)
-        passaro_amarelo.lancar(90, 2)  # passaro lancado a 90 graus no tempo 2 segundos
-
-
+        passaro_amarelo.lancar(90, 2)  # passaro lancado a 90 graus no tempo 2s
 
         # subindo
-
         self.assert_posicao_vertical(1, 2.0, passaro_amarelo)
         self.assert_posicao_vertical(1, 2.01, passaro_amarelo)
         self.assert_posicao_vertical(2, 2.02, passaro_amarelo)
@@ -285,7 +297,6 @@ class PassaroAmareloTests(PassaroBaseTests):
         self.assert_posicao_vertical(2, 2.05, passaro_amarelo)
 
         # descendo
-
         self.assert_posicao_vertical(46, 5.26, passaro_amarelo)
         self.assert_posicao_vertical(46, 5.27, passaro_amarelo)
         self.assert_posicao_vertical(46, 5.279999999999999, passaro_amarelo)
