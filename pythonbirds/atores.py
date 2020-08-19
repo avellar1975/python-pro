@@ -28,7 +28,7 @@ class Ator():
         self.y = y
         self.x = x
         self.status = ATIVO
-        self.caracter()
+        #self.caracter()
 
     def caracter(self):
         """Método caracter."""
