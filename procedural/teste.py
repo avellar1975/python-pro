@@ -3,7 +3,7 @@ from unittest import TestCase
 
 
 def soma(*args):
-    """Recebe dois argumentos e retorna a soma."""
+    """Recebe argumentos e retorna a soma, dependendo do tipo de argumento."""
     concatena = ''
     if any(type(item) == str for item in args):
         for item in args:
