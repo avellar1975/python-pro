@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from atores import PassaroVermelho, PassaroAmarelo, Porco, Obstaculo
 from fase import Fase
 import placa_grafica
