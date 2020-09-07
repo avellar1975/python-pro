@@ -1,5 +1,4 @@
 """Classe atores."""
-from __future__ import unicode_literals
 from math import sin, cos, radians
 
 DESTRUIDO = 'Destruido'
